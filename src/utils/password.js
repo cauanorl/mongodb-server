@@ -7,7 +7,6 @@ async function crypto(password) {
    return anonymPassword
 }
 
-
 module.exports = {
    crypto,
 }

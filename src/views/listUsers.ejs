@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <%- include('./partials/head.ejs') %>
+</head>
+<body>
+    
+  <h1><%= title %></h1>
+
+  <%- include('./partials/navbar.ejs') %>
+
+  <ol>
+    <% for (let user of users) { %>
+      <li>
+        <%= `Nome: ${user['name']}` %>
+        <br>
+        <%= `Idade: ${user['age']}` %>
+        <br>
+        <%= `E-mail: ${user['email']}` %>
+      </li>
+    <% } %>
+  </ol>
+      
+      
+  <%- include('./partials/foot.ejs') %>
+</body>
+</html>
