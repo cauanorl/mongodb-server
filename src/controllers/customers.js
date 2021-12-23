@@ -1,7 +1,8 @@
 const CustomersModel = require('../models/customers')
+const { crypto } = require('../utils/password')
 
 
-function add(request, response) {
+async function add(request, response) {
    const {
       name,
       age,
@@ -9,20 +10,19 @@ function add(request, response) {
       password,
    } = request.body
 
+   const anonymPwd = await crypto(password)
+
    const register = new CustomersModel({
       name,
       age,
       email,
-      password,
+      password: anonymPwd,
    })
 
    register.save()
 
    response.send('Cadastro realizado')
 }
-
-
-
 
 
 module.exports = {
