@@ -28,3 +28,10 @@ form button {
   padding: 5px;
   cursor: pointer;
 }
+
+li {
+  border: 1px solid black;
+  margin-top: 3px;
+  padding: 8px;
+  width: 300px;
+}
