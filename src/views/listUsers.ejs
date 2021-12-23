@@ -17,6 +17,9 @@
         <%= `Idade: ${user['age']}` %>
         <br>
         <%= `E-mail: ${user['email']}` %>
+        <br>
+        <a href='/edit?id=<%= user._id %>'>[Editar]</a> - 
+        <a href='/remove/<%= user._id %>'>[Deletar]</a>
       </li>
     <% } %>
   </ol>

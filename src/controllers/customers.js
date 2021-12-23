@@ -43,9 +43,56 @@ async function listUsers(request, response) {
    })
 }
 
+async function formEdit(request, response) {
+   const { id } = request.query
+
+   const user = await CustomersModel.findById(id)
+
+   response.render('editUsers', {
+      title: 'Editar clientes',
+      user
+   })
+}
+
+async function edit(request, response) {
+   const {
+      name,
+      age,
+      email,
+   } = request.body
+
+   const { id } = request.params
+
+   const user = await CustomersModel.findById(id)
+
+   user.name = name
+   user.age = age
+   user.email = email
+
+   user.save()
+
+
+   response.render('editUsers', {
+      title: 'Editar clientes',
+      user
+   })
+}
+
+async function remove(request, response) {
+   const { id } = request.params
+
+   const remove = await CustomersModel.deleteOne({ _id: id })
+
+   if (remove.ok) {
+      response.redirect('listUsers')
+   }
+}
 
 module.exports = {
    index,
    add,
    listUsers,
+   formEdit,
+   edit,
+   remove,
 }
