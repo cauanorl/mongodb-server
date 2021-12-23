@@ -3,25 +3,26 @@
 const express = require('express')
 const path = require('path')
 
+const db = require('./database')
+const routes = require('./routes')
+
 const app = express()
 
+// Conexão com banco de dados
+db.connect()
 
 // Definindo a template engine
 app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'views'))  // NÃO ENTENDI
 
 // Definindo os arquivos públicos
 app.use(express.static(path.join(__dirname, 'public')))
 
-// Habilatando o server a receber dados via post (Formulários)
+// Habilitando o server a receber dados via post (Formulários)
 app.use(express.urlencoded({ extended: true }))
 
-// ROTAS
-app.get('/', function(request, response) {
-   response.render('index', {
-      title: 'Titulo teste'
-   })
-})
+// definindo rotas
+app.use('/', routes)
 
 // Erro 404 (page not found)
 app.use((request, response) => {
