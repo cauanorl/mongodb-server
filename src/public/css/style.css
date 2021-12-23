@@ -1,3 +1,30 @@
 body {
   background-color: lightgray;
 }
+
+form {
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+form div {
+  margin-top: 10px;
+}
+
+form div label {
+  display: inline-block;
+  width: 45px;
+}
+
+form div input {
+  outline: none;
+  padding: 6px 0 8px 4px;
+}
+
+form button {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+}
